@@ -1,0 +1,210 @@
+﻿
+
+@model  Models.EF.Product
+
+
+<style>
+    .zoom{transition:transform .2s;}
+    .zoom:hover{transform: scale(1.1);}
+</style>
+@section Noidungbenphai{
+    <table class="chitietsp">
+        <h3 id="title_spmoi" style="text-align:center">@Model.Name.ToUpper()</h3>
+        <br />
+        <tr>
+            <td rowspan="5">
+                <img style="width:300px" id="zoom_04" class="zoom" src="@Url.Content("~/image/" + Model.Photo)" alt="image" />
+            </td>
+            <td>
+                <h3>ID Product: @Model.ProductId</h3>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <p class="status">Name Product: <span class="pink">@Model.Name</span></p>
+            </td>
+        </tr>
+        <tr>
+            @if (Model.Quantity > 0)
+            {
+                <td>
+                    <p class="status">Staus: <span class="pink">have @Model.Quantity Product</span></p>
+                </td>
+            }
+            else
+            {
+                <td>
+                    <p class="status">Status: <span class="pink">Out of</span></p>
+                </td>
+            }
+        </tr>
+        <tr>
+            <td>
+                <p class="status">Price: <span class="pink">@string.Format("{0:#,###.##}", Model.Price)₫</span></p>
+                @{
+                    if (Model.Discount > 0)
+                    {
+                        <p class="status">Special price (@Model.Discount%): <span class="pink">@string.Format("{0:#,###.##}", (Model.Price - (Model.Price * Model.Discount * 0.01)))₫</span></p>
+                    }
+                }
+                @*<p>Từ @Model.StartDate đến @Model.EndDate</p>*@
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <a style="font-family:unset;" href="/them-gio-hang?productid=@Model.ProductId&quantity=1" class="btn btn-primary fa fa-cart-plus"> Place an order</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+}
+<hr>
+<div class="row">
+
+    <div class="short-des col-sm-12 col-xs-12">
+        <ul class="nav nav-tabs" style="font-size:17px">
+            <li class="nav active"><a href="#produc-des" data-toggle="tab"> Product Description</a></li>
+            <li class="nav"><a href="#tab-gh" data-toggle="tab"> Delivery </a></li>
+            <li class="nav"><a href="#tab-th" data-toggle="tab"> Returns </a></li>
+            <li class="nav"><a href="#tab-bh" data-toggle="tab"> Insurance </a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content" style="margin-top:15px; margin-bottom:10px">
+            <div class="tab-pane fade in active" id="produc-des">
+                <h2>@Model.Description</h2>
+            </div>
+            <div class="tab-pane fade" id="tab-gh">
+                <div align="justify">
+                    <p>
+                        <font><strong>I. Shipping</strong></font>
+                    </p>
+                    <p>
+                        <font><strong>A. Savings package:</strong> </font><br>
+                        <br>
+                        - Location: 2 ton truck (wide alley &gt; 5m) can get in.
+                    </p>
+                    <p>
+                        - Bringing heavy and bulky goods to high floors (or apartments by stairs): Please use the delivery package as required below.<br>
+                        - Delivery time: within 5 days for inner city (12 days for foreign province) from the date of order confirmation. The delivery department will notify the delivery time 1 day in advance. <br>
+                        <br>
+                        <strong><font>B. Service pack: </font></strong><br>
+                        - Delivery location: road prohibited from trucks, entering a small alley, or carrying to a high floor requires at least 2 people.
+                    </p>
+                    <p>
+                        - Delivery time: same day delivery according to the required time if the goods are available at the transit warehouse.
+                    </p>
+                    <p>
+                        &nbsp;
+                    </p>
+                    <p>
+                        <font ><strong>2. Installation</strong></font>
+                    </p>
+                    <p>
+                        - The above shipping prices include free assembly service for cities with transshipment warehouses.
+                    </p>
+
+                    <p>
+                        - You need other services such as drilling into the wall, removing old furniture, cutting more glass... Please contact us in advance for specific costs.
+                    </p>
+                    <p>
+                        <font>* Useful information: </font> All wooden products at Studionoithat.com are designed according to international standards. The links, screw holes, and the number of screws are also precisely designed and calculated so that everyone can assemble easily by themselves.
+                    </p>
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tab-th">
+                <p align="justify">
+                    Return and exchange when the goods do not meet the announced quality
+                </p>
+                <p align="justify">
+                    To ensure the interests of the customer and the responsibility of the carrier, the customer needs to check the goods carefully when receiving the goods. As soon as you receive the goods, you can request an exchange if the goods are not quality.
+                </p>
+                <p align="justify">
+                    Return when not suitable for the house
+                </p>
+                <p align="justify">
+                    Immediately upon delivery, you can still return the goods if the product does not match the general interior, you will have to pay the shipping costs:
+                </p>
+                <p align="justify">
+                    + Shipping costs. In case you change your mind after&nbsp; When the delivery vehicle has left, you will have to pay two-way transportation costs (onward and return) for the company to send another vehicle to pick up the goods. Note, when returning goods, packaging and accessories must be complete. The cost of packaging on the market today is very expensive (usually a large carton is more than 100,000 VND), so it is necessary to carefully preserve the box when deciding to return the goods.
+                </p>
+                <p align="justify">
+                    + You will not be refunded the goods after the payment has been completed.
+                </p>
+
+                <p align="justify">
+                    <font style="font-weight: bold; color: rgb(255, 0, 255);">Not returnable</font>
+                </p>
+                <p align="justify">
+                    In any school after completing the delivery and payment of the purchase, we do not accept the exchange or return of the goods as payment has been completed to the factory.
+                </p>
+                <p align="justify">
+                    In case the product has lost its packaging, is not intact or damaged due to customer error, Studionoithat.com has the right to refuse the above return.
+                </p>
+            </div>
+            <div class="tab-pane fade" id="tab-bh">
+                <p>
+                    <strong>Warranty period according to factory regulations</strong>
+                </p>
+                <p>
+                    All of our products are warranted for 6 months from the date on the delivery note.
+                </p>
+                <p>
+                    <strong>Defects are guaranteed for 6 months</strong>
+                </p>
+                <p>
+                    a. Broken due to design or manufacturing defect. No warranty if the product is used for the wrong purpose.
+                </p>
+                <p>
+                    b. Paint is peeling because it doesn't stick to the wood.
+                </p>
+                <p>
+                    c. The product is eaten by termites from the inside of the wood.
+                </p>
+                <p>
+                    <strong>Warranty Method</strong>
+                </p>
+                <p>
+                    Depending on the level of damage, we will proceed in the order of priority as follows:
+                </p>
+                <p>
+                    1. Paint miles, repair, reinforce products: done within 1 week
+                </p>
+                <p>
+                    2. Exchange similar products: within 2 weeks if the product is available in stock on the web.
+                </p>
+                <p>
+                    3. Product refund excluding shipping fee: made within 1 month from the date of notification of no stock for replacement.
+                </p>
+                <p>
+                    <strong>Warranty Procedure</strong>
+                </p>
+                <p>
+                    1. Contact the sales department to provide the following information: contact information, damaged error, order number.
+                </p>
+                <p>
+                    2. The product is only warranted at the factory. We will arrange an appointment to receive the product for warranty within 7 days. We do not bear the cost of shipping and receiving warranty products. Shipping costs are calculated according to the standard delivery shipping policy.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@*<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/src/jquery.ez-plus.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#zoom_04").ezPlus();
+    });
+</script>*@
+<hr/>
+<div class="boxmain" >
+    @Html.Action("NewProduct", "Product")
+    @Html.Action("CateKorea", "Product")
+    @Html.Action("CateHavana", "Product")
+</div>
+
